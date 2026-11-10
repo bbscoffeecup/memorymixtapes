@@ -1,342 +1,359 @@
 
-"use strict";
 
-// ==================================
-// CUSTOMISE YOUR PROFILE'S MUSIC
-// ==================================
+// ALL PLAYLISTS AND SONGS
 
-const album = {
-  title: "Midnight Memories",
-  artist: "My personal playlist",
-  label: "SIDE A"
+const playlists = {
+
+    jazz: [
+        {
+            title: "Table For Two",
+            artist: "aron!",
+            file: "/music/jazz_tablefortwo.mp3"
+        },
+        {
+            title: "It Could Happen To You",
+            artist: "Laufey",
+            file: "/music/jazz_itcouldhappentoyou.mp3"
+        },
+        {
+            title: "Nearness of You",
+            artist: "Ella Fitzgerald",
+            file: "/music/jazz_nearnessofyou.mp3"
+        }
+    ],
+
+    rnb: [
+        {
+            title: "R&B Song 1",
+            artist: "Artist Four",
+            file: "music/rnb1.mp3"
+        },
+        {
+            title: "R&B Song 2",
+            artist: "Artist Five",
+            file: "music/rnb2.mp3"
+        },
+        {
+            title: "R&B Song 3",
+            artist: "Artist Six",
+            file: "music/rnb3.mp3"
+        }
+    ],
+
+    rock: [
+        {
+            title: "Rock Song 1",
+            artist: "Artist Seven",
+            file: "music/rock1.mp3"
+        },
+        {
+            title: "Rock Song 2",
+            artist: "Artist Eight",
+            file: "music/rock2.mp3"
+        },
+        {
+            title: "Rock Song 3",
+            artist: "Artist Nine",
+            file: "music/rock3.mp3"
+        }
+    ],
+
+    pop: [
+        {
+            title: "Pop Song 1",
+            artist: "Artist Seven",
+            file: "music/pop1.mp3"
+        },
+        {
+            title: "Pop Song 2",
+            artist: "Artist Eight",
+            file: "music/pop2.mp3"
+        },
+        {
+            title: "Pop Song 3",
+            artist: "Artist Nine",
+            file: "music/pop3.mp3"
+        }
+    ],
+
+
 };
 
-const tracks = [
-  {
-    title: "Maybe",
-    artist: "Rym",
-    src: "music/maybe.mp3"
-  },
-  {
-    title: "My Favourite Song",
-    artist: "Favourite Artist",
-    src: "music/favourite.mp3"
-  },
-  {
-    title: "Late Night",
-    artist: "Another Artist",
-    src: "music/late-night.mp3"
-  }
-];
 
-// ==================================
-// ELEMENTS
-// ==================================
+// GET HTML ELEMENTS
 
-const audio = document.querySelector("#audio");
-const cd = document.querySelector("#cd");
-const playlist = document.querySelector("#playlist");
+const audio = document.getElementById("audio");
+const dropBox = document.getElementById("drop-box");
+const dropText = document.getElementById("drop-text");
 
-const playButton = document.querySelector("#play");
-const previousButton = document.querySelector("#previous");
-const nextButton = document.querySelector("#next");
-const shuffleButton = document.querySelector("#shuffle");
-const repeatButton = document.querySelector("#repeat");
+const songTitle = document.getElementById("song-title");
+const songArtist = document.getElementById("song-artist");
 
-const progress = document.querySelector("#progress");
-const volume = document.querySelector("#volume");
+const songList = document.getElementById("song-list");
+const playButton = document.getElementById("play");
+const nextButton = document.getElementById("next");
+const previousButton = document.getElementById("previous");
 
-const titleElement = document.querySelector("#album-title");
-const artistElement = document.querySelector("#artist-name");
-const cdLabel = document.querySelector("#cd-label");
-const currentTimeElement = document.querySelector("#current-time");
-const durationElement = document.querySelector("#duration");
-const statusElement = document.querySelector("#status");
+const progress = document.getElementById("progress");
+const status = document.getElementById("status");
 
-let currentIndex = 0;
-let shuffle = false;
-let repeat = false;
-let seeking = false;
 
-// ==================================
-// ALBUM DETAILS
-// ==================================
+// CURRENT PLAYLIST AND SONG
 
-titleElement.textContent = album.title;
-artistElement.textContent = album.artist;
-cdLabel.textContent = album.label;
+let currentPlaylist = [];
+let currentSong = 0;
 
-// ==================================
-// HELPERS
-// ==================================
 
-function formatTime(seconds) {
-  if (!Number.isFinite(seconds) || seconds < 0) {
-    return "0:00";
-  }
+// DRAG AND DROP PLAYLISTS
 
-  const minutes = Math.floor(seconds / 60);
-  const remaining = Math.floor(seconds % 60);
+const playlistBoxes = document.querySelectorAll(".playlist-box");
 
-  return `${minutes}:${String(remaining).padStart(2, "0")}`;
-}
+playlistBoxes.forEach(function(box) {
 
-function updatePlaylist() {
-  const buttons = playlist.querySelectorAll("button");
-
-  buttons.forEach((button, index) => {
-    if (index === currentIndex) {
-      button.setAttribute("aria-current", "true");
-    } else {
-      button.removeAttribute("aria-current");
-    }
-  });
-}
-
-function renderPlaylist() {
-  playlist.replaceChildren();
-
-  tracks.forEach((track, index) => {
-    const item = document.createElement("li");
-    const button = document.createElement("button");
-    const number = document.createElement("span");
-    const details = document.createElement("span");
-    const title = document.createElement("strong");
-    const artist = document.createElement("span");
-    const symbol = document.createElement("span");
-
-    number.className = "track-number";
-    number.textContent = String(index + 1).padStart(2, "0");
-
-    details.className = "track-details";
-    title.textContent = track.title;
-    artist.textContent = track.artist;
-    details.append(title, artist);
-
-    symbol.className = "track-symbol";
-    symbol.setAttribute("aria-hidden", "true");
-    symbol.textContent = "♫";
-
-    button.type = "button";
-    button.append(number, details, symbol);
-
-    button.addEventListener("click", () => {
-      loadTrack(index, true);
+    box.addEventListener("dragstart", function() {
+        box.classList.add("dragging");
     });
 
-    item.append(button);
-    playlist.append(item);
-  });
+    box.addEventListener("dragend", function() {
+        box.classList.remove("dragging");
+    });
 
-  updatePlaylist();
-}
+    // CLICK TO SELECT A PLAYLIST
+    box.addEventListener("click", function() {
+        selectPlaylist(box.dataset.name);
+    });
 
-// ==================================
-// LOAD AND PLAY MUSIC
-// ==================================
-
-function loadTrack(index, autoplay = false) {
-  if (tracks.length === 0) return;
-
-  currentIndex = (index + tracks.length) % tracks.length;
-
-  const track = tracks[currentIndex];
-
-  audio.pause();
-  audio.src = track.src;
-  audio.load();
-
-  // The document title identifies the current track.
-  document.title = `${track.title} — ${album.title}`;
-
-  currentTimeElement.textContent = "0:00";
-  durationElement.textContent = "0:00";
-  progress.value = 0;
-
-  playButton.textContent = "▶";
-  playButton.setAttribute("aria-label", `Play ${track.title}`);
-  cd.classList.remove("spinning");
-
-  statusElement.textContent = `Selected: ${track.title}`;
-
-  updatePlaylist();
-
-  if (autoplay) {
-    playTrack();
-  }
-}
-
-async function playTrack() {
-  if (tracks.length === 0) return;
-
-  try {
-    await audio.play();
-
-    playButton.textContent = "Ⅱ";
-    playButton.setAttribute(
-      "aria-label",
-      `Pause ${tracks[currentIndex].title}`
-    );
-
-    cd.classList.add("spinning");
-    statusElement.textContent = `Playing: ${tracks[currentIndex].title}`;
-  } catch (error) {
-    cd.classList.remove("spinning");
-    statusElement.textContent =
-      "Unable to play this song. Check the audio file path.";
-
-    console.error("Playback failed:", error);
-  }
-}
-
-function pauseTrack() {
-  audio.pause();
-  cd.classList.remove("spinning");
-
-  playButton.textContent = "▶";
-  playButton.setAttribute(
-    "aria-label",
-    `Play ${tracks[currentIndex].title}`
-  );
-
-  statusElement.textContent = "Paused";
-}
-
-playButton.addEventListener("click", () => {
-  if (audio.paused) {
-    playTrack();
-  } else {
-    pauseTrack();
-  }
 });
 
-previousButton.addEventListener("click", () => {
-  if (audio.currentTime > 3) {
-    audio.currentTime = 0;
-    return;
-  }
 
-  loadTrack(currentIndex - 1, true);
+// ALLOW PLAYLIST TO BE DROPPED
+
+dropBox.addEventListener("dragover", function(event) {
+    event.preventDefault();
+    dropBox.classList.add("drag-over");
 });
 
-nextButton.addEventListener("click", () => {
-  if (shuffle && tracks.length > 1) {
-    playRandomTrack();
-  } else {
-    loadTrack(currentIndex + 1, true);
-  }
+dropBox.addEventListener("dragleave", function() {
+    dropBox.classList.remove("drag-over");
 });
 
-// ==================================
-// PROGRESS AND VOLUME
-// ==================================
+dropBox.addEventListener("drop", function(event) {
 
-audio.volume = Number(volume.value);
+    event.preventDefault();
 
-audio.addEventListener("loadedmetadata", () => {
-  durationElement.textContent = formatTime(audio.duration);
-});
+    dropBox.classList.remove("drag-over");
 
-audio.addEventListener("timeupdate", () => {
-  currentTimeElement.textContent = formatTime(audio.currentTime);
+    const selectedBox = document.querySelector(".playlist-box.dragging");
 
-  if (!seeking && Number.isFinite(audio.duration)) {
-    progress.value = audio.duration > 0
-      ? (audio.currentTime / audio.duration) * 100
-      : 0;
-  }
-});
-
-progress.addEventListener("input", () => {
-  seeking = true;
-
-  const newTime =
-    (Number(progress.value) / 100) * (audio.duration || 0);
-
-  currentTimeElement.textContent = formatTime(newTime);
-});
-
-progress.addEventListener("change", () => {
-  if (Number.isFinite(audio.duration)) {
-    audio.currentTime =
-      (Number(progress.value) / 100) * audio.duration;
-  }
-
-  seeking = false;
-});
-
-volume.addEventListener("input", () => {
-  audio.volume = Number(volume.value);
-});
-
-// ==================================
-// SHUFFLE AND REPEAT
-// ==================================
-
-function playRandomTrack() {
-  if (tracks.length === 0) return;
-
-  let nextIndex = currentIndex;
-
-  if (tracks.length > 1) {
-    while (nextIndex === currentIndex) {
-      nextIndex = Math.floor(Math.random() * tracks.length);
+    if (selectedBox) {
+        selectPlaylist(selectedBox.dataset.name);
     }
-  }
 
-  loadTrack(nextIndex, true);
+});
+
+
+// SELECT A PLAYLIST
+
+function selectPlaylist(name) {
+
+    currentPlaylist = playlists[name];
+
+    currentSong = 0;
+
+    dropText.textContent = "Selected: " + name.toUpperCase();
+
+    displaySongs();
+
+    playSong();
+
 }
 
-shuffleButton.addEventListener("click", () => {
-  shuffle = !shuffle;
 
-  shuffleButton.setAttribute("aria-pressed", String(shuffle));
-  shuffleButton.textContent = `⇄ Shuffle: ${shuffle ? "On" : "Off"}`;
-});
+// DISPLAY SONGS
 
-repeatButton.addEventListener("click", () => {
-  repeat = !repeat;
+function displaySongs() {
 
-  repeatButton.setAttribute("aria-pressed", String(repeat));
-  repeatButton.textContent = `↻ Repeat: ${repeat ? "On" : "Off"}`;
-});
+    songList.innerHTML = "";
 
-audio.addEventListener("ended", () => {
-  if (repeat) {
-    audio.currentTime = 0;
-    playTrack();
-  } else if (shuffle && tracks.length > 1) {
-    playRandomTrack();
-  } else if (currentIndex < tracks.length - 1) {
-    loadTrack(currentIndex + 1, true);
-  } else {
-    // Stop at the end of the playlist.
-    cd.classList.remove("spinning");
-    playButton.textContent = "▶";
-    playButton.setAttribute("aria-label", "Play music");
-    statusElement.textContent = "Playlist finished";
-  }
-});
+    for (let i = 0; i < currentPlaylist.length; i++) {
 
-audio.addEventListener("error", () => {
-  cd.classList.remove("spinning");
-  statusElement.textContent =
-    "Song unavailable. Check its filename and location.";
-});
+        let song = currentPlaylist[i];
 
-// ==================================
-// INITIALISE
-// ==================================
+        let li = document.createElement("li");
 
-renderPlaylist();
+        li.textContent = song.title + " - " + song.artist;
 
-if (tracks.length > 0) {
-  loadTrack(0);
-} else {
-  titleElement.textContent = "No songs yet";
-  artistElement.textContent = "Add songs to script.js";
-  playButton.disabled = true;
-  previousButton.disabled = true;
-  nextButton.disabled = true;
+        li.addEventListener("click", function() {
+
+            currentSong = i;
+
+            playSong();
+
+        });
+
+        songList.appendChild(li);
+
+    }
+
+    updateActiveSong();
+
 }
 
+
+// PLAY A SONG
+
+function playSong() {
+
+    let song = currentPlaylist[currentSong];
+
+    audio.src = song.file;
+
+    songTitle.textContent = song.title;
+
+    songArtist.textContent = song.artist;
+
+    audio.play().then(function() {
+        playButton.textContent = "⏸";
+        document.querySelector(".cd").classList.add("playing");
+        status.textContent = "";
+    }).catch(function() {
+        status.textContent = "Unable to play this song. Check your MP3 file.";
+        playButton.textContent = "▶";
+        document.querySelector(".cd").classList.remove("playing");
+    });
+
+    updateActiveSong();
+
+}
+
+
+// PLAY AND PAUSE BUTTON
+
+playButton.addEventListener("click", function() {
+
+    if (currentPlaylist.length === 0) {
+        status.textContent = "Please choose a playlist first.";
+        return;
+    }
+
+    if (audio.paused) {
+
+        audio.play().then(function() {
+            playButton.textContent = "⏸";
+            document.querySelector(".cd").classList.add("playing");
+            status.textContent = "";
+        }).catch(function() {
+            status.textContent = "Unable to play this song. Check your MP3 file.";
+        });
+
+    } else {
+
+        audio.pause();
+
+        playButton.textContent = "▶";
+
+        document.querySelector(".cd").classList.remove("playing");
+
+    }
+
+});
+
+
+// NEXT SONG
+
+nextButton.addEventListener("click", function() {
+
+    if (currentPlaylist.length === 0) {
+        return;
+    }
+
+    currentSong++;
+
+    if (currentSong >= currentPlaylist.length) {
+        currentSong = 0;
+    }
+
+    playSong();
+
+});
+
+
+// PREVIOUS SONG
+
+previousButton.addEventListener("click", function() {
+
+    if (currentPlaylist.length === 0) {
+        return;
+    }
+
+    currentSong--;
+
+    if (currentSong < 0) {
+        currentSong = currentPlaylist.length - 1;
+    }
+
+    playSong();
+
+});
+
+
+// AUTOMATICALLY PLAY NEXT SONG
+
+audio.addEventListener("ended", function() {
+
+    currentSong++;
+
+    if (currentSong >= currentPlaylist.length) {
+        currentSong = 0;
+    }
+
+    playSong();
+
+});
+
+
+// UPDATE SONG PROGRESS
+
+audio.addEventListener("timeupdate", function() {
+
+    if (audio.duration) {
+
+        let percentage = (audio.currentTime / audio.duration) * 100;
+
+        progress.value = percentage;
+
+    }
+
+});
+
+
+// MOVE THROUGH SONG USING PROGRESS BAR
+
+progress.addEventListener("input", function() {
+
+    if (audio.duration) {
+
+        audio.currentTime = (progress.value / 100) * audio.duration;
+
+    }
+
+});
+
+
+// HIGHLIGHT CURRENT SONG
+
+function updateActiveSong() {
+
+    let songs = songList.querySelectorAll("li");
+
+    songs.forEach(function(song, index) {
+
+        song.classList.remove("active");
+
+        if (index === currentSong) {
+            song.classList.add("active");
+        }
+
+    });
+
+}
