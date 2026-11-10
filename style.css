@@ -1,1 +1,391 @@
+:root {
+  color-scheme: dark;
+
+  /* CUSTOMISE THESE FOR EACH GENRE */
+  --background: #17243a;
+  --card: #243958;
+  --accent: #a8c5ff;
+  --text: #f6f4f7;
+  --muted: #c3ccda;
+  --border: #536d91;
+  --focus: #ffe08a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 24px 14px;
+  background:
+    radial-gradient(ellipse at top, #30496c, transparent 65%),
+    var(--background);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.profile {
+  width: min(100%, 460px);
+  margin: 0 auto;
+  display: grid;
+  gap: 18px;
+}
+
+.profile-card,
+.player-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--card);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 15%);
+}
+
+.profile-card {
+  text-align: center;
+}
+
+.avatar {
+  width: 104px;
+  height: 104px;
+  margin: 0 auto 16px;
+  display: block;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  background: var(--background);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  overflow-wrap: anywhere;
+}
+
+.username {
+  margin: 2px 0 12px;
+  color: var(--muted);
+}
+
+.bio {
+  margin: 0 0 16px;
+}
+
+.profile-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.profile-details span {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.player-card {
+  text-align: center;
+}
+
+.cd-area {
+  padding: 18px 0 24px;
+  display: grid;
+  place-items: center;
+}
+
+.cd {
+  width: min(65vw, 220px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      #dce2eb 0deg 2deg,
+      #9ba8bb 3deg 5deg,
+      #424e63 6deg 8deg,
+      #c6d1e0 9deg 12deg
+    );
+  box-shadow:
+    0 0 0 5px #7385a1,
+    0 12px 26px rgb(0 0 0 / 35%),
+    inset 0 0 20px rgb(0 0 0 / 30%);
+}
+
+.cd-label {
+  width: 43%;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 3px solid var(--border);
+  border-radius: 50%;
+  background: var(--accent);
+  color: #17243a;
+  font-size: 0.65rem;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.cd-hole {
+  width: 18%;
+  aspect-ratio: 1;
+  border: 3px solid #7385a1;
+  border-radius: 50%;
+  background: var(--card);
+}
+
+.cd.spinning {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.album-info {
+  margin-bottom: 20px;
+}
+
+.album-info h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  overflow-wrap: anywhere;
+}
+
+.album-info p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.progress-area {
+  margin-top: 16px;
+}
+
+input[type="range"] {
+  width: 100%;
+  min-height: 28px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.timestamps {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 12px 0;
+}
+
+.control,
+.play-button,
+.text-control {
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  background: var(--background);
+}
+
+.control {
+  min-width: 48px;
+  padding: 8px;
+}
+
+.play-button {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #17243a;
+  font-size: 1.25rem;
+}
+
+.control:hover,
+.text-control:hover {
+  border-color: var(--accent);
+}
+
+.play-button:hover {
+  filter: brightness(1.1);
+}
+
+.extra-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.text-control {
+  padding: 8px 12px;
+  font-size: 0.8rem;
+}
+
+.text-control[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #17243a;
+}
+
+.volume-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 24px;
+  text-align: left;
+  font-size: 0.8rem;
+}
+
+.volume-area label {
+  flex-shrink: 0;
+}
+
+.volume-area input {
+  flex: 1;
+}
+
+.playlist-heading {
+  padding-top: 18px;
+  margin: 0;
+  border-top: 1px solid var(--border);
+  text-align: left;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+}
+
+.playlist {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  margin: 12px 0 0;
+  list-style: none;
+  text-align: left;
+}
+
+.playlist button {
+  width: 100%;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--background);
+  color: var(--text);
+  text-align: left;
+}
+
+.playlist button[aria-current="true"] {
+  border-color: var(--accent);
+  background: #30496c;
+}
+
+.track-number {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.track-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.track-details strong,
+.track-details span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.track-details span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.track-symbol {
+  color: var(--accent);
+}
+
+.status {
+  min-height: 24px;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+footer {
+  padding: 4px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 360px) {
+  .profile-card,
+  .player-card {
+    padding: 17px;
+  }
+
+  .controls {
+    gap: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cd.spinning {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
