@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#243958">
   <meta name="description" content="My personal music profile.">
   <title>My Music Profile</title>
-  <link rel="stylesheet" href="try2.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js" defer></script>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
       >
 
       <p class="eyebrow">A LITTLE ABOUT ME</p>
-      <h1 id="profile-name">Safa <span aria-hidden="true">💗</span></h1>
+      <h1 id="profile-name">Safa</h1>
       <p class="username">@safahayan</p>
 
       <p class="bio">Living life one song at a time ♫</p>
@@ -32,77 +32,101 @@
       </div>
     </section>
 
-    <!-- CD PLAYER -->
-    <section class="player-card" aria-labelledby="album-title">
-      <p class="eyebrow">NOW SPINNING ♫</p>
+    
+<!-- PLAYLISTS -->
+<section class="playlist-section">
 
-      <div class="casette-rack">
-       
-      </div>
-	  
-	  <div class="casette-area">
-       
-      </div>
+    <h2>My Playlists ♫</h2>
+    <p>Choose a playlist and drag it into the box!</p>
+    <h3><br></h3>
 
-      <div class="album-info" aria-live="polite">
-        <h2 id="album-title">My Playlist</h2>
-        <p id="artist-name">A collection of favourites</p>
-      </div>
+    <div class="playlists">
 
-      <audio id="audio" preload="metadata"></audio>
-
-      <div class="progress-area">
-        <label class="sr-only" for="progress">Song progress</label>
-        <input id="progress" type="range"
-               min="0" max="100" value="0" step="0.1">
-
-        <div class="timestamps">
-          <span id="current-time">0:00</span>
-          <span id="duration">0:00</span>
+        <div class="playlist-box" draggable="true"
+             data-name="jazz">
+            ☾
+            <h3>Jazz</h3>
+            <p>3 Songs</p>
+            
         </div>
-      </div>
 
-      <div class="controls" aria-label="Music player controls">
-        <button id="previous" class="control"
-                type="button" aria-label="Previous song">|◀</button>
+        <h3><br></h3>
 
-        <button id="play" class="play-button"
-                type="button" aria-label="Play music">▶</button>
+        <div class="playlist-box" draggable="true"
+             data-name="rnb">
+            ♡
+            <h3>R&B</h3>
+            <p>3 Songs</p>
+        </div>
 
-        <button id="next" class="control"
-                type="button" aria-label="Next song">▶|</button>
-      </div>
+        <h3><br></h3>
 
-      <div class="extra-controls">
-        <button id="shuffle" class="text-control"
-                type="button" aria-pressed="false">
-          ⇄ Shuffle: Off
-        </button>
+        <div class="playlist-box" draggable="true"
+             data-name="rock">
+            ✦
+            <h3>Rock</h3>
+            <p>3 Songs</p>
+        </div>
 
-        <button id="repeat" class="text-control"
-                type="button" aria-pressed="false">
-          ↻ Repeat: Off
-        </button>
-      </div>
+        <h3><br></h3>
 
-      <div class="volume-area">
-        <label for="volume">Volume</label>
-        <input id="volume" type="range"
-               min="0" max="1" value="0.7" step="0.05">
-      </div>
+        <div class="playlist-box" draggable="true"
+             data-name="pop">
+            ✦
+            <h3>Pop</h3>
+            <p>3 Songs</p>
+        </div>
 
-      <h3 class="playlist-heading">TRACKLIST</h3>
-      <ol id="playlist" class="playlist"></ol>
+        <h3><br></h3>
 
-      <p id="status" class="status" role="status">
-        Ready to play
-      </p>
-    </section>
+    </div>
 
-    <footer>
-      made with ♡ and music
-    </footer>
+</section>
 
-  </main>
+
+<!-- DROP ZONE -->
+<div id="drop-box">
+    <p id="drop-text">Drop your playlist here ♫</p>
+</div>
+
+
+<!-- CD PLAYER -->
+<section class="player-card">
+
+    <h2 id="song-title">My CD Player</h2>
+    <p id="song-artist">Select a playlist to begin</p>
+
+    <div class="cd" id="cd">
+        <div class="cd-middle"></div>
+    </div>
+
+    <audio id="audio"></audio>
+
+    <div class="controls">
+
+        <button id="previous">⏮</button>
+        <button id="play">▶</button>
+        <button id="next">⏭</button>
+
+    </div>
+
+    <input type="range" id="progress"
+           value="0" min="0" max="100">
+
+    <div class="track-section">
+
+        <h3>Tracklist</h3>
+
+        <ol id="song-list">
+            <li>Your songs will appear here.</li>
+        </ol>
+
+    </div>
+
+    <p id="status">Waiting for playlist...</p>
+
+</section>
+
 </body>
 </html>
+
