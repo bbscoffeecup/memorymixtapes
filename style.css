@@ -15,6 +15,12 @@ body {
     padding: 30px;
 }
 
+main {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
 .container {
     max-width: 900px;
     margin: auto;
@@ -42,6 +48,8 @@ body {
 
 .profile-info h1 {
     margin-bottom: 8px;
+    text-align: center;
+
 }
 
 .profile-info p {
@@ -59,11 +67,13 @@ body {
 .playlists h2,
 .music-section h2 {
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .playlists > p {
     color: #777;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .playlist-container {
