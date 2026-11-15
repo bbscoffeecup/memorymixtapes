@@ -24,19 +24,19 @@ const playlists = {
 
     rnb: [
         {
-            title: "R&B Song 1",
-            artist: "Artist Four",
-            file: "music/rnb1.mp3"
+            title: "Been Away",
+            artist: "Brent Faiyaz",
+            file: "music/Brent Faiyaz - Been Away (Audio).mp3"
         },
         {
-            title: "R&B Song 2",
-            artist: "Artist Five",
-            file: "music/rnb2.mp3"
+            title: "Trust",
+            artist: "Brent Faiyaz",
+            file: "music/Brent Faiyaz - Trust (Official Video).mp3"
         },
         {
-            title: "R&B Song 3",
-            artist: "Artist Six",
-            file: "music/rnb3.mp3"
+            title: "Thinkin' Bout You",
+            artist: "Frank Ocean",
+            file: "music/Thinkin Bout You.mp3"
         }
     ],
 
