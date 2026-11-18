@@ -66,7 +66,7 @@
 
 <!-- DROP ZONE -->
 <div id="drop-box">
-    <p id="drop-text">Drop your playlist here ♫</p>
+    <p id="drop-text">Drop your playlist here!</p>
 </div>
 
 
@@ -74,7 +74,8 @@
 <section class="player-card">
 
     <h2 id="song-title">My CD Player</h2>
-    <p id="song-artist">Select a playlist to begin</p>
+    <p id="song-artist">Select a playlist to begin <br></p>
+    <p><br></p>
 
     <div class="cd" id="cd">
         <div class="cd-middle"></div>
@@ -95,7 +96,7 @@
 
     <div class="track-section">
 
-        <h3>Tracklist</h3>
+        <h3><br>Tracklist<br></h3>
 
         <ol id="song-list">
             <li>Your songs will appear here.</li>
@@ -111,12 +112,50 @@
 
 </main>
 
-<section>
-<main class="profile">
-     <!-- PERSONAL PROFILE -->
-    <h3>Feedback form</h3>
-    </section>
-    </main>
+
+<section class="feedback-section">
+    <h2>Leave Your Feedback  💌</h2>
+    <p>Have a song recommendation or thoughts on my playlists? Let us know!</p>
+
+    <form class="feedback-form" action="#" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select your gender</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="datetime">Date & Time</label>
+          <input type="datetime-local" id="datetime" name="datetime" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="feedback">Your Feedback</label>
+        <textarea id="feedback" name="feedback" rows="4" placeholder="Type your message here..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Send Feedback ♪</button>
+    </form>
+  </section>
+
+
 
     <main class="profile">
      <!-- PERSONAL PROFILE -->
