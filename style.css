@@ -1,6 +1,9 @@
-@import url('https://googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 
-/* GENERAL SETTINGS */
+
+/* ========================================
+   GENERAL SETTINGS
+======================================== */
 
 * {
     margin: 0;
@@ -9,150 +12,369 @@
 }
 
 body {
-    font-family: "Quicksand", serif;
+    font-family: "Quicksand", sans-serif;
     background-color: #f4f0f5;
     color: #39313d;
     padding: 30px;
 }
 
-main {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-}
-
-.container {
-    max-width: 900px;
-    margin: auto;
+button {
+    font-family: inherit;
 }
 
 
-/* PROFILE SECTION */
+/* ========================================
+   MAIN MUSIC CONTAINER
+======================================== */
 
 .profile {
     width: 100%;
-    max-width: 900px; /* Adjust this to match your main container width */
-    margin: 60px auto 30px auto;
-    padding: 35px 40px;
+    max-width: 1200px;
+
+    margin: 30px auto;
+    padding: 40px;
+
     background-color: #faf7fc;
+
     border: 1px solid #e6dcf0;
-    border-radius: 16px;
-    font-family: Georgia, "Times New Roman", serif;
-    color: #2b2233;
-    box-sizing: border-box;
-}
-
-.profile img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.profile-info h1 {
-    margin-bottom: 8px;
-    text-align: center;
-
-}
-
-.profile-info p {
-    margin-bottom: 5px;
-    color: #777;
+    border-radius: 20px;
 }
 
 
-/* PLAYLIST SECTION */
+/* TWO-COLUMN LAYOUT */
+
+.music-layout {
+    display: flex;
+    flex-direction: row;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 45px;
+
+    width: 100%;
+}
+
+
+/* ========================================
+   LEFT COLUMN
+======================================== */
+
+.music-left {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 30px;
+}
+
+
+/* ========================================
+   PLAYLIST SECTION
+======================================== */
 
 .playlists {
-    margin-bottom: 35px;
+    width: 100%;
 }
 
-.playlists h2,
-.music-section h2 {
-    margin-bottom: 10px;
+.playlists h2 {
     text-align: center;
+
+    margin-bottom: 10px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    color: #2b2233;
 }
 
 .playlists > p {
-    color: #777;
-    margin-bottom: 15px;
     text-align: center;
+
+    color: #888;
+    font-size: 14px;
+
+    margin-bottom: 25px;
 }
+
+
+/* ========================================
+   CAROUSEL
+======================================== */
+
+.carousel-wrapper {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    width: 90%;
+}
+
+
+/* CASSETTE TRACK */
 
 .playlist-container {
     display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+
     gap: 15px;
-    flex-wrap: wrap;
+
+    flex: 1;
+    min-width: 0;
+
+    overflow: hidden;
+
+    padding: 20px 5px;
 }
+
+
+/* ========================================
+   CASSETTE CARDS
+======================================== */
 
 .playlist-box {
-    flex: 1;
-    min-width: 180px;
-    padding: 20px;
-    background-color: white;
+    flex: 0 0 140px;
+
+    width: 140px;
+    min-width: 140px;
+    min-height: 180px;
+
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background-color: #f1eaf7;
+
     border: 2px solid transparent;
-    border-radius: 15px;
-    text-align: left;
-    color: #39313d;
-    font-family: inherit;
+    border-radius: 18px;
+
+    transform: scale(0.85);
+
     cursor: grab;
-    transition: 0.2s;
+
+    transition: all 0.35s ease;
 }
 
-.playlist-box:hover {
-    border-color: #a88bb5;
-    transform: translateY(-3px);
+
+/* SELECTED CASSETTE */
+
+.playlist-box.active {
+    flex: 0 0 180px;
+
+    width: 180px;
+    min-width: 180px;
+    min-height: 200px;
+
+    opacity: 1;
+    transform: scale(1);
+
+    background-color: #ffffff;
+
+    border-color: #d8c8e1;
 }
 
-.playlist-box span {
-    font-size: 30px;
+
+/* CASSETTE IMAGE */
+
+.playlist-box img {
+    display: block;
+
+    width: 100%;
+    max-width: 190px;
+
+    height: auto;
+
+    object-fit: contain;
 }
+
+
+/* CASSETTE TEXT */
 
 .playlist-box h3 {
-    margin: 10px 0 5px;
+    margin-top: 12px;
+    margin-bottom: 5px;
+
+    font-size: 17px;
+    color: #39313d;
 }
 
 .playlist-box p {
-    color: #777;
-    font-size: 13px;
+    color: #888;
+    font-size: 12px;
 }
 
 
-/* DROP AREA */
+/* CASSETTE HOVER */
+
+.playlist-box:hover {
+    border-color: #a88bb5;
+    background-color: #faf7fc;
+}
+
+.playlist-box:active {
+    cursor: grabbing;
+}
+
+
+/* ========================================
+   CAROUSEL BUTTONS
+======================================== */
+
+.carousel-btn {
+    flex-shrink: 0;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: #e8deed;
+    color: #725b7c;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.carousel-btn:active {
+    transform: scale(0.95);
+}
+
+
+/* ========================================
+   DROP ZONE
+======================================== */
 
 #drop-box {
-    margin: 30px auto 30px auto;
-    padding: 60px 60px;
-    background-color: #dcc2f6;
-    border: 2px solid #e6dcf0;
-    border-radius: 15px;
-    padding: 25px;
+    width: 100%;
+    min-height: 180px;
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
-    transition: 0.2s;
+
+    background-color: #e4ccf7;
+
+    border: 2px dashed #b794d5;
+    border-radius: 18px;
+
+    color: #725b7c;
+
+    transition: 0.25s ease;
 }
+
+
+/* DROP ZONE HOVER */
 
 #drop-box.drag-over {
-    background-color: #a88bb5;
-    border: 3px solid #725b7c;
-    box-shadow: 0 5px 20px rgba(114, 91, 124, 0.2);
+    background-color: #d2b3ef;
+
+    border-color: #8262a1;
+
+    box-shadow:
+        0 5px 20px rgba(114, 91, 124, 0.15);
+}
+
+.drop-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+#drop-text {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.drop-subtext {
+    font-size: 12px;
+    color: #927ba6;
+    margin-top: 8px;
 }
 
 
-/* MUSIC PLAYER */
+/* ========================================
+   RIGHT COLUMN — PLAYER
+======================================== */
 
-.player {
-    background-color: white;
+.player-card {
+    flex: 0 0 380px;
+
+    width: 380px;
+    max-width: 100%;
+
     padding: 30px;
-    border-radius: 15px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e6dcf0;
+    border-radius: 20px;
+
     text-align: center;
-    max-width: 500px;
-    margin: auto;
 }
+
+
+/* PLAYER HEADING */
+
+.player-heading {
+    margin-bottom: 20px;
+}
+
+.player-label {
+    color: #a88bb5;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+#song-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+
+    margin-bottom: 8px;
+}
+
+#song-artist {
+    font-size: 13px;
+    color: #888;
+}
+
+
+/* ========================================
+   CD
+======================================== */
 
 .cd {
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 170px;
+
+    margin: 25px auto;
+
     border-radius: 50%;
+
     background: conic-gradient(
         #d8c8e1,
         #a88bb5,
@@ -160,10 +382,12 @@ main {
         #a88bb5,
         #d8c8e1
     );
-    margin: 0 auto 25px;
+
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     animation: spin 5s linear infinite;
     animation-play-state: paused;
 }
@@ -172,15 +396,25 @@ main {
     animation-play-state: running;
 }
 
+
+/* CD CENTER */
+
 .cd-middle {
-    width: 35px;
-    height: 35px;
+    width: 38px;
+    height: 38px;
+
     border-radius: 50%;
+
     background-color: white;
+
     border: 5px solid #c2a9ce;
 }
 
+
+/* CD ANIMATION */
+
 @keyframes spin {
+
     from {
         transform: rotate(0deg);
     }
@@ -188,219 +422,496 @@ main {
     to {
         transform: rotate(360deg);
     }
-}
 
-.song-info {
-    margin-bottom: 20px;
-}
-
-.song-info p {
-    color: #888;
-    margin-top: 5px;
 }
 
 
-/* PROGRESS BAR */
-
-.progress-container {
-    margin: 20px 0;
-}
-
-#progress {
-    width: 100%;
-    cursor: pointer;
-    accent-color: #9472a3;
-}
-
-
-/* PLAYER BUTTONS */
+/* ========================================
+   MUSIC CONTROLS
+======================================== */
 
 .controls {
     display: flex;
+
     justify-content: center;
     align-items: center;
-    gap: 25px;
+
+    gap: 18px;
+
+    margin: 20px 0;
 }
 
 .controls button {
-    border: none;
-    background-color: #e8deed;
-    color: #725b7c;
     width: 45px;
     height: 45px;
+
+    border: none;
     border-radius: 50%;
+
+    background-color: #e8deed;
+    color: #725b7c;
+
     font-size: 18px;
+
     cursor: pointer;
+
+    transition: 0.2s ease;
 }
 
 .controls button:hover {
     background-color: #d8c8e1;
+    transform: scale(1.05);
 }
 
 #play {
     width: 55px;
     height: 55px;
+
     font-size: 22px;
 }
 
 
-/* SONG LIST */
+/* ========================================
+   PROGRESS BAR
+======================================== */
 
-.song-section {
-    margin-top: 30px;
+.progress-section {
+    width: 100%;
+    margin: 20px 0;
 }
 
-.song-section ul {
-    list-style: none;
-    margin-top: 15px;
-}
+#progress {
+    width: 100%;
 
-.song-section li {
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
     cursor: pointer;
-    transition: 0.2s;
+
+    accent-color: #9472a3;
 }
 
-.song-section li:hover {
+
+/* ========================================
+   TRACKLIST
+======================================== */
+
+.track-section {
+    margin-top: 25px;
+
+    text-align: left;
+}
+
+.track-section h3 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    margin-bottom: 12px;
+}
+
+#song-list {
+    padding-left: 20px;
+}
+
+#song-list li {
+    padding: 12px;
+
+    margin-bottom: 8px;
+
+    border-radius: 10px;
+
+    background-color: #faf7fc;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+#song-list li:hover {
     background-color: #e8deed;
 }
 
-.song-section li.active {
+#song-list li.active {
     background-color: #d8c8e1;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 
-/* STATUS */
+/* ========================================
+   STATUS
+======================================== */
 
 #status {
-    text-align: center;
     color: #9472a3;
+
+    font-size: 12px;
+
     margin-top: 15px;
+}
+
+
+/* ========================================
+   FEEDBACK SECTION
+======================================== */
+
+.feedback-section {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 40px auto;
+
+    padding: 40px;
+
+    background-color: #faf7fc;
+
+    border: 1px solid #e6dcf0;
+    border-radius: 20px;
+}
+
+.feedback-section h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    margin-bottom: 10px;
+
+    font-size: 26px;
+}
+
+.feedback-section > p {
+    color: #5c4d6b;
+
+    margin-bottom: 25px;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   FEEDBACK FORM
+======================================== */
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.form-group label {
+    font-weight: 700;
+
+    margin-bottom: 7px;
+
+    font-size: 13px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d4c4e3;
+    border-radius: 10px;
+
+    background-color: white;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    color: #2b2233;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #9b7bb8;
+
+    box-shadow:
+        0 0 0 3px rgba(155, 123, 184, 0.12);
+}
+
+
+/* SUBMIT BUTTON */
+
+.submit-btn {
+    align-self: flex-start;
+
+    padding: 12px 28px;
+
+    background-color: #9b7bb8;
+    color: white;
+
+    border: none;
+    border-radius: 30px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #8262a1;
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   PROFILES
+======================================== */
+
+.profiles-section {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 40px auto;
+
+    text-align: center;
+}
+
+.profiles-section > h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    color: #2b2233;
+
+    margin-bottom: 25px;
+}
+
+
+/* PROFILE GRID */
+
+.profiles-container {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+/* PROFILE CARD */
+
+.profile-card {
+    padding: 25px 20px;
+
+    background-color: #faf7fc;
+
+    border: 1px solid #e6dcf0;
+    border-radius: 18px;
+
+    text-align: center;
+
+    transition: 0.2s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 20px rgba(168, 139, 181, 0.12);
+}
+
+
+/* PROFILE IMAGE */
+
+.avatar {
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    margin-bottom: 15px;
+}
+
+
+/* PROFILE TEXT */
+
+.profile-card h1 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.username {
+    color: #9472a3;
+    font-size: 13px;
+
+    margin-bottom: 12px;
+}
+
+.id {
+    color: #777;
+    font-size: 13px;
+
+    margin-bottom: 15px;
+}
+
+.profile-details {
+    color: #725b7c;
     font-size: 13px;
 }
 
 
-/* MOBILE VIEW */
+/* ========================================
+   TABLET
+======================================== */
 
-@media (max-width: 600px) {
-
-    body {
-        padding: 15px;
-    }
+@media (max-width: 950px) {
 
     .profile {
-        flex-direction: column;
-        text-align: center;
+        padding: 25px;
     }
 
-    .playlist-container {
-        flex-direction: column;
+    .music-layout {
+        gap: 25px;
+    }
+
+    .player-card {
+        flex-basis: 330px;
+        width: 330px;
+
+        padding: 25px;
     }
 
     .playlist-box {
-        width: 100%;
+        flex-basis: 120px;
+
+        width: 120px;
+        min-width: 120px;
+    }
+
+    .playlist-box.active {
+        flex-basis: 190px;
+
+        width: 190px;
+        min-width: 190px;
+    }
+
+    .profiles-container {
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }
 
-  .feedback-section {
-    width: 100%;
-    max-width: 900px; /* Adjust this to match your main container width */
-    margin: 60px auto 30px auto;
-    padding: 35px 40px;
-    background-color: #faf7fc;
-    border: 1px solid #e6dcf0;
-    border-radius: 16px;
-    font-family: Georgia, "Times New Roman", serif;
-    color: #2b2233;
-    box-sizing: border-box;
-  }
 
-  .feedback-section h2 {
-    margin-top: 0;
-    margin-bottom: 8px;
-    font-size: 1.5rem;
-  }
+/* ========================================
+   MOBILE
+======================================== */
 
-  .feedback-section p {
-    margin-top: 0;
-    margin-bottom: 25px;
-    color: #5c4d6b;
-    font-size: 0.95rem;
-  }
+@media (max-width: 700px) {
 
-  .feedback-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
+    body {
+        padding: 12px;
+    }
 
-  .form-row {
-    display: flex;
-    gap: 20px;
-  }
+    .profile {
+        padding: 20px 15px;
+        margin: 15px auto;
+    }
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
+    .music-layout {
+        flex-direction: column;
+        align-items: center;
 
-  .form-group label {
-    font-weight: bold;
-    margin-bottom: 6px;
-    font-size: 0.9rem;
-  }
+        gap: 30px;
+    }
 
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    padding: 10px 14px;
-    border: 1px solid #d4c4e3;
-    border-radius: 8px;
-    background-color: #ffffff;
-    font-family: inherit;
-    font-size: 0.95rem;
-    color: #2b2233;
-    outline: none;
-    transition: border-color 0.2s ease;
-  }
+    .music-left {
+        width: 100%;
+    }
 
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: #9b7bb8;
-  }
+    .player-card {
+        flex: none;
 
-  .submit-btn {
-    align-self: flex-start;
-    padding: 12px 28px;
-    background-color: #9b7bb8;
-    color: #ffffff;
-    border: none;
-    border-radius: 25px;
-    font-family: inherit;
-    font-size: 0.95rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
+        width: 100%;
+        max-width: 450px;
+    }
 
-  .submit-btn:hover {
-    background-color: #8262a1;
-  }
+    .carousel-wrapper {
+        gap: 5px;
+    }
 
-  @media (max-width: 768px) {
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+
+        font-size: 14px;
+    }
+
+    .playlist-container {
+        gap: 8px;
+
+        padding: 20px 2px;
+    }
+
+    .playlist-box {
+        flex: 0 0 100px;
+
+        width: 100px;
+        min-width: 100px;
+        min-height: 150px;
+
+        padding: 8px;
+    }
+
+    .playlist-box.active {
+        flex: 0 0 160px;
+
+        width: 160px;
+        min-width: 160px;
+        min-height: 200px;
+    }
+
+    .playlist-box img {
+        max-width: 140px;
+    }
+
+    #drop-box {
+        min-height: 140px;
+        padding: 20px;
+    }
+
+    .cd {
+        width: 140px;
+        height: 140px;
+    }
+
     .feedback-section {
-      padding: 20px;
-      margin: 30px 15px;
+        padding: 25px 20px;
+        margin: 25px auto;
     }
+
     .form-row {
-      flex-direction: column;
-      gap: 18px;
+        flex-direction: column;
+        gap: 18px;
     }
-  }
+
+    .submit-btn {
+        width: 100%;
+        align-self: stretch;
+    }
+
+    .profiles-container {
+        grid-template-columns: 1fr;
+    }
+
+}

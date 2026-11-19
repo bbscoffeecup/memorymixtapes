@@ -1,233 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#243958">
-  <meta name="description" content="My personal music profile.">
-  <title>My Music Profile</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="index.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#d8c8e1">
+    <meta name="description" content="My personal music profile.">
+
+    <title>My Music Profile ♫</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
 </head>
 
 <body>
 
-  <main class="profile">
-    <section class="playlist-section">
-    <h2>My Playlists ♫</h2>
-    <p>Choose a playlist and drag it into the box!</p>
-  </main>
-
-  <main class="profile">
-
-    <div class="playlists">
-
-        <div class="playlist-box" draggable="true"
-             data-name="jazz">
-            ☾
-            <h3>Jazz</h3>
-            <p>3 Songs</p>
-            
-        </div>
-
-        <h3><br></h3>
-
-        <div class="playlist-box" draggable="true"
-             data-name="rnb">
-            ♡
-            <h3>R&B</h3>
-            <p>3 Songs</p>
-        </div>
-
-        <h3><br></h3>
-
-        <div class="playlist-box" draggable="true"
-             data-name="rock">
-            ✦
-            <h3>Rock</h3>
-            <p>3 Songs</p>
-        </div>
-
-        <h3><br></h3>
-
-        <div class="playlist-box" draggable="true"
-             data-name="pop">
-            ✦
-            <h3>Pop</h3>
-            <p>3 Songs</p>
-        </div>
-
-        <h3><br></h3>
-
-    </div>
-
-</section>
-
-
-<!-- DROP ZONE -->
-<div id="drop-box">
-    <p id="drop-text">Drop your playlist here!</p>
-</div>
-
-
-<!-- CD PLAYER -->
-<section class="player-card">
-
-    <h2 id="song-title">My CD Player</h2>
-    <p id="song-artist">Select a playlist to begin <br></p>
-    <p><br></p>
-
-    <div class="cd" id="cd">
-        <div class="cd-middle"></div>
-    </div>
-
-    <audio id="audio"></audio>
-
-    <div class="controls">
-
-        <button id="previous">⏮</button>
-        <button id="play">▶</button>
-        <button id="next">⏭</button>
-
-    </div>
-
-    <input type="range" id="progress"
-           value="0" min="0" max="100">
-
-    <div class="track-section">
-
-        <h3><br>Tracklist<br></h3>
-
-        <ol id="song-list">
-            <li>Your songs will appear here.</li>
-        </ol>
-
-    </div>
-
-    <p id="status">Waiting for playlist...</p>
-
-    
-
-</section>
-
-</main>
-
-
-<section class="feedback-section">
-    <h2>Leave Your Feedback  💌</h2>
-    <p>Have a song recommendation or thoughts on my playlists? Let us know!</p>
-
-    <form class="feedback-form" action="#" method="POST">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required>
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label for="gender">Gender</label>
-          <select id="gender" name="gender" required>
-            <option value="" disabled selected>Select your gender</option>
-            <option value="female">Female</option>
-            <option value="male">Male</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="datetime">Date & Time</label>
-          <input type="datetime-local" id="datetime" name="datetime" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="feedback">Your Feedback</label>
-        <textarea id="feedback" name="feedback" rows="4" placeholder="Type your message here..." required></textarea>
-      </div>
-
-      <button type="submit" class="submit-btn">Send Feedback ♪</button>
-    </form>
-  </section>
-
-
-
     <main class="profile">
-     <!-- PERSONAL PROFILE -->
-    <section class="profile-card" aria-labelledby="profile-name">
-      <img
-        class="avatar"
-        src="images/avatar.jpg"
-        alt="My profile picture"
-      >
-      <h1 id="profile-name">Balqis</h1>
-      <p class="username">@safahayan</p>
 
-      <p class="bio">Living life one song at a time ♫</p>
+        <div class="music-layout">
 
-      <div class="profile-details">
-        <span>🎧 Music lover</span>
-      </div>
-    </section>
+            <!-- LEFT SIDE -->
+            <div class="music-left">
 
-    <section class="profile-card" aria-labelledby="profile-name">
-      <img
-        class="avatar"
-        src="images/avatar.jpg"
-        alt="My profile picture"
-      >
+                <!-- PLAYLIST CAROUSEL -->
+                <section class="playlists">
+                    <h2>My Playlists ♫</h2>
+                    <p>Choose a cassette or drag it into the box!</p>
 
-      <h1 id="profile-name">Melissa</h1>
-      <p class="username">@safahayan</p>
+                    <div class="carousel-viewport">
+                        <div class="playlist-container">
 
-      <p class="bio">Living life one song at a time ♫</p>
+                        <div class="playlist-box" draggable="true" data-name="jazz">
+                            <img src="/casettes/jazz_casette.jpeg" alt="Jazz Cassette">
+                            <h3>Jazz</h3>
+                        </div>
 
-      <div class="profile-details">
-        
-      </div>
-    </section>
+                        <div class="playlist-box" draggable="true" data-name="rnb">
+                            <img src="/casettes/rb_casette.jpeg" alt="R&B Cassette">
+                            <h3>R&B</h3>
+                        </div>
 
-    <section class="profile-card" aria-labelledby="profile-name">
-      <img
-        class="avatar"
-        src="images/avatar.jpg"
-        alt="My profile picture"
-      >
-      <h1 id="profile-name">Safa</h1>
-      <p class="username">@safahayan</p>
+                        <div class="playlist-box" draggable="true" data-name="rock">
+                            <img src="/casettes/rock_casette.jpeg" alt="Rock Cassette">
+                            <h3>Rock</h3>
+                        </div>
 
-      <p class="bio">Living life one song at a time ♫</p>
+                        <div class="playlist-box" draggable="true" data-name="pop">
+                            <img src="/casettes/pop_casette.jpeg" alt="Pop Cassette">
+                            <h3>Pop</h3>
+                        </div>
 
-      <div class="profile-details">
-        <span>🎧 Music lover</span>
-      </div>
-    </section>
+                    </div>
 
-    <section class="profile-card" aria-labelledby="profile-name">
-      <img
-        class="avatar"
-        src="images/avatar.jpg"
-        alt="My profile picture"
-      >
+                </section>
 
-      <h1 id="profile-name">Fadhlin</h1>
-      <p class="username">@safahayan</p>
+                <!-- DROP ZONE -->
+                <div id="drop-box">
 
-      <p class="bio">Living life one song at a time ♫</p>
+                    <div class="drop-icon">♫</div>
 
-      <div class="profile-details">
-        <span>🎧 Music lover</span>
-      </div>
-    </section>
+                    <p id="drop-text">
+                        Drop your playlist here!
+                    </p>
+
+                    <span class="drop-subtext">
+                        Drag a cassette to start listening
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE: MUSIC PLAYER -->
+            <section class="player-card">
+
+                <div class="player-heading">
+                    <p class="player-label">NOW PLAYING</p>
+
+                    <h2 id="song-title">My CD Player</h2>
+
+                    <p id="song-artist">
+                        Select a playlist to begin
+                    </p>
+                </div>
+
+
+                <!-- CD -->
+                <div class="cd" id="cd">
+                    <div class="cd-middle"></div>
+                </div>
+
+
+                <!-- AUDIO -->
+                <audio id="audio"></audio>
+
+
+                <!-- CONTROLS -->
+                <div class="controls">
+
+                    <button id="previous" type="button" aria-label="Previous song">
+                        ⏮
+                    </button>
+
+                    <button id="play" type="button" aria-label="Play or pause">
+                        ▶
+                    </button>
+
+                    <button id="next" type="button" aria-label="Next song">
+                        ⏭
+                    </button>
+
+                </div>
+
+
+                <!-- PROGRESS -->
+                <div class="progress-section">
+
+                    <input
+                        type="range"
+                        id="progress"
+                        value="0"
+                        min="0"
+                        max="100"
+                    >
+
+                </div>
+
+
+                <!-- TRACKLIST -->
+                <div class="track-section">
+
+                    <h3>Tracklist ♫</h3>
+
+                    <ol id="song-list">
+                        <li>Your songs will appear here.</li>
+                    </ol>
+
+                </div>
+
+
+                <!-- STATUS -->
+                <p id="status">
+                    Waiting for playlist...
+                </p>
+
+            </section>
+
+        </div>
+
     </main>
 
-</section>
+
+    <!-- =========================
+         FEEDBACK SECTION
+    ========================== -->
+
+    <section class="feedback-section">
+
+        <h2>Leave Your Feedback 💌</h2>
+
+        <p>
+            Have a song recommendation or thoughts on our playlists?
+            Let us know!
+        </p>
+
+        <form class="feedback-form" action="#" method="POST">
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Your name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+
+                    <select id="gender" name="gender" required>
+                        <option value="" disabled selected>Select your gender</option>
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="datetime">Date &amp; Time</label>
+
+                    <input
+                        type="datetime-local"
+                        id="datetime"
+                        name="datetime"
+                        required
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="feedback">Your Feedback</label>
+
+                <textarea
+                    id="feedback"
+                    name="feedback"
+                    rows="4"
+                    placeholder="Type your message here..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button type="submit" class="submit-btn">
+                Send Feedback ♪
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- =========================
+         PERSONAL PROFILE SECTION
+    ========================== -->
+
+    <section class="profiles-section">
+
+        <h2>Meet the Music Lovers ♡</h2>
+
+        <div class="profiles-container">
+
+
+            <!-- PROFILE 1 -->
+            <section class="profile-card" onclick="window.location.href ='mailto:bbbalqisbatrisyia@gmail.com'">
+
+                <img
+                    class="avatar"
+                    src="images/avatar.jpg"
+                    alt="Balqis profile picture"
+                >
+
+                <h1>Balqis</h1>
+
+                <p class="username">
+                    <a href="https://www.instagram.com/bbdoingstuffs" target="_blank" rel="noopener noreferrer">@bbdoingstuffs</a>
+                </p>
+
+                <p class="id">AK1086167</p>
+
+                <div >
+                    <span>🎧 Jazz</span>
+                </div>
+
+
+            </section>
+
+
+            <!-- PROFILE 2 -->
+            <section class="profile-card" onclick="window.location.href ='mailto:melissaaaqila@gmail.com'">
+
+                <img
+                    class="avatar"
+                    src="images/avatar.jpg"
+                    alt="Melissa profile picture"
+                >
+
+                <h1>Melissa</h1>
+
+                <p class="username">
+                    <a href="https://www.instagram.com/mellymel.aaq" target="_blank" rel="noopener noreferrer">@mellymel.aaq</a>
+                </p>
+
+                <p class="id">AK1086172</p>
+
+                <div >
+                    <span>🎧 R&B</span>
+                </div>
+
+            </section>
+
+            <!-- PROFILE 3 -->
+            <section class="profile-card" onclick="window.location.href ='mailto:AK1085784@student.uniten.edu.my'">
+
+                <img
+                    class="avatar"
+                    src="images/avatar.jpg"
+                    alt="Safa profile picture"
+                >
+
+                <h1>Fadhlin</h1>
+
+                <p class="username">
+                    <a href="https://www.instagram.com/idkhaveinstaname" target="_blank" rel="noopener noreferrer">@idkhaveinstaname</a>
+                </p>
+
+                <p class="id">AK1085784</p>
+
+                <div>
+                    <span>🎧 Rock</span>
+                </div>
+
+
+            </section>
+
+
+
+            <!-- PROFILE 4 -->
+            <section class="profile-card" onclick="window.location.href ='mailto:safahay.abozaid2007@gmail.com'">
+
+                <img
+                    class="avatar"
+                    src="images/avatar.jpg"
+                    alt="Safa profile picture"
+                >
+
+                <h1>Safa Hayan</h1>
+
+                <p class="username">
+                    <a href="https://www.instagram.com/safa.abozeed" target="_blank" rel="noopener noreferrer">@safa.abozeed</a>
+                </p>
+
+                <p class="id">AK1086212</p>
+
+                <div >
+                    <span>🎧 Pop</span>
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </section>
 
 </body>
 </html>
-
