@@ -163,7 +163,7 @@ h1 {
     </div>
 
     <div class="footer">
-        THANK YOU FOR YOUR TIME
+        <a href="feedbackform.html"> CONTINUE LISTENING TO MUSIC </a>
     </div>
 
 </div>
