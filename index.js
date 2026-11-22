@@ -43,18 +43,18 @@ const playlists = {
 
     rock: [
         {
-            title: "Rock Song 1",
-            artist: "Artist Seven",
+            title: "Cicada",
+            artist: "Good Kid",
             file: "music/rock1.mp3"
         },
         {
-            title: "Rock Song 2",
-            artist: "Artist Eight",
+            title: "Digital Silence",
+            artist: "Peter McPoland",
             file: "music/rock2.mp3"
         },
         {
-            title: "Rock Song 3",
-            artist: "Artist Nine",
+            title: "Feel Good Inc",
+            artist: "Gorillaz",
             file: "music/rock3.mp3"
         }
     ],
