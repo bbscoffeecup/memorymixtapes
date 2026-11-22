@@ -45,17 +45,17 @@ const playlists = {
         {
             title: "Cicada",
             artist: "Good Kid",
-            file: "music/rock1.mp3"
+            file: "music/Rock-Cicada-Good Kid.mp3"
         },
         {
             title: "Digital Silence",
             artist: "Peter McPoland",
-            file: "music/rock2.mp3"
+            file: "music/Rock-Digital Silence-Peter McPoland.mp3"
         },
         {
             title: "Feel Good Inc",
             artist: "Gorillaz",
-            file: "music/rock3.mp3"
+            file: "music/Rock-Feel Good Inc.-Gorrilaz.mp3"
         }
     ],
 
