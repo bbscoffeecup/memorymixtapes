@@ -370,11 +370,7 @@ button {
 .cd {
     width: 170px;
     height: 170px;
-
-    margin: 25px auto;
-
     border-radius: 50%;
-
     background: conic-gradient(
         #d8c8e1,
         #a88bb5,
@@ -382,12 +378,14 @@ button {
         #a88bb5,
         #d8c8e1
     );
-
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin: 0 auto 25px;
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     animation: spin 5s linear infinite;
     animation-play-state: paused;
 }
@@ -396,25 +394,15 @@ button {
     animation-play-state: running;
 }
 
-
-/* CD CENTER */
-
 .cd-middle {
-    width: 38px;
-    height: 38px;
-
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
-
     background-color: white;
-
-    border: 5px solid #c2a9ce;
+    border: 2px solid #d8c8e1;
 }
 
-
-/* CD ANIMATION */
-
 @keyframes spin {
-
     from {
         transform: rotate(0deg);
     }
@@ -422,9 +410,7 @@ button {
     to {
         transform: rotate(360deg);
     }
-
 }
-
 
 /* ========================================
    MUSIC CONTROLS
