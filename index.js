@@ -46,19 +46,22 @@ const playlists = {
 
     rock: [
         {
-            title: "Rock Song 1",
-            artist: "Artist Seven",
-            file: "music/rock1.mp3"
+            title: "Cicada",
+            artist: "Good Kid",
+            file: "music/Rock-Cicada-Good Kid.mp3",
+            cover: "album image/good_kid_album-removebg-preview.png",
         },
         {
-            title: "Rock Song 2",
-            artist: "Artist Eight",
-            file: "music/rock2.mp3"
+            title: "Feel Good Inc.",
+            artist: "Gorrilaz",
+            file: "music/Rock-Feel Good Inc.-Gorrilaz.mp3",
+            cover: "album image/gorrilaz_album-removebg-preview.png",
         },
         {
-            title: "Rock Song 3",
-            artist: "Artist Nine",
-            file: "music/rock3.mp3"
+            title: "Digital Silence",
+            artist: "Peter McPoland",
+            file: "music/rock_digitalsilence.mp3",
+            cover: "album image/digital_silence-removebg-preview.png",
         }
     ],
 
@@ -66,19 +69,19 @@ const playlists = {
         {
             title: "Training Season",
             artist: "Dua Lipa",
-            file: "music/Dua Lipa - Training Season (Official Music Video).mp3",
+            file: "music/pop_trainingseason.mp3",
             cover: "album image/Training_Season_Album-removebg-preview.png"
         },
         {
             title: "As It Was",
             artist: "Harry Styles",
-            file: "music/Harry Styles - As It Was (Official Video).mp3",
+            file: "music/pop_asitwas.mp3",
             cover: "album image/As_It_Was_Album-removebg-preview.png"
         },
         {
             title: "On The Floor",
             artist: "Jennifer Lopez",
-            file: "music/Jennifer Lopez - On The Floor ft. Pitbull.mp3",
+            file: "music/pop_onthefloor.mp3",
             cover: "album image/On_The_Floor_Album-removebg-preview.png"
         }
     ]
