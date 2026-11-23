@@ -46,22 +46,19 @@ const playlists = {
 
     rock: [
         {
-            title: "Cicada",
-            artist: "Good kid",
-            file: "music/Rock-Cicada-Good Kid.mp3",
-            cover: "album image/good_kid_album-removebg-preview.png"
+            title: "Rock Song 1",
+            artist: "Artist Seven",
+            file: "music/rock1.mp3"
         },
         {
-            title: "Digital Silence",
-            artist: "Pete McPoland",
-            file: "music/Rock-Digital Silence-Pete McPoland.mp3",
-            cover: "album image/digital_silence-removebg-preview.png"
+            title: "Rock Song 2",
+            artist: "Artist Eight",
+            file: "music/rock2.mp3"
         },
         {
-            title: "Feel Good Inc",
-            artist: "Gorrilaz",
-            file: "music/Rock-Feel Good Inc.-Gorrilaz.mp3",
-            cover: "album image/gorrilaz_album-removebg-preview.png"
+            title: "Rock Song 3",
+            artist: "Artist Nine",
+            file: "music/rock3.mp3"
         }
     ],
 
