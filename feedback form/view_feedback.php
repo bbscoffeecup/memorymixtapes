@@ -1,3 +1,20 @@
+<?php
+
+include 'conn.php';
+
+$show_query = "SELECT * FROM groove";
+
+$check_query = mysqli_query($conn,$show_query);
+
+
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,7 +103,34 @@
             <th>Email</th>
             <th>Message</th>
         </tr>
-        
+
+<?php
+
+if(mysqli_num_rows($check_query)>0){
+
+    while($data = mysqli_fetch_assoc($check_query)){
+
+        echo "<tr>
+        <td>".htmlspecialchars($data['id'], ENT_QUOTES, 'UTF-8')."</td>
+        <td>".htmlspecialchars($data['name'], ENT_QUOTES, 'UTF-8')."</td>
+        <td>".htmlspecialchars($data['email'], ENT_QUOTES, 'UTF-8')."</td>
+        <td>".htmlspecialchars($data['message'], ENT_QUOTES, 'UTF-8')."</td>
+        </tr>";
+
+
+    }
+
+
+}
+
+
+
+
+
+
+?>
+
+
     </table>
     
     <div class="back-link">
